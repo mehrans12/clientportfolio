@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syed Daniyal Ahmed | Data Analyst Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;600;700;800&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #030712;
+            /* gray-950 */
+            color: #e5e7eb;
+            /* gray-200 */
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        .outfit {
+            font-family: 'Outfit', sans-serif;
+        }
+
+        /* Animated Background Orbs */
+        .orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(120px);
+            z-index: -1;
+            animation: floatOrb 20s infinite alternate;
+        }
+
+        .orb-1 {
+            width: 50vw;
+            height: 50vw;
+            background: rgba(16, 185, 129, 0.12); /* emerald-500 */
+            top: -20vh;
+            left: -20vw;
+            animation-delay: 0s;
+        }
+
+        .orb-2 {
+            width: 40vw;
+            height: 40vw;
+            background: rgba(34, 197, 94, 0.12); /* green-500 */
+            bottom: -10vh;
+            right: -10vw;
+            animation-delay: -5s;
+        }
+
+        .orb-3 {
+            width: 30vw;
+            height: 30vw;
+            background: rgba(20, 184, 166, 0.1); /* teal-500 */
+            top: 30vh;
+            left: 30vw;
+            animation-delay: -10s;
+        }
+
+        @keyframes floatOrb {
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            33% {
+                transform: translate(5vw, -5vh) scale(1.1);
+            }
+
+            66% {
+                transform: translate(-3vw, 3vh) scale(0.9);
+            }
+
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+        }
+
+        /* Glass Card Effect */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(16, 185, 129, 0.3);
+            transform: translateY(-6px);
+            box-shadow: 0 15px 35px -10px rgba(16, 185, 129, 0.2);
+        }
+
+        .glass-nav {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Gradient Text */
+        .text-gradient {
+            background: linear-gradient(135deg, #34d399 0%, #10b981 50%, #059669 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Timeline styling */
+        .timeline-line {
+            width: 2px;
+            background: linear-gradient(to bottom, transparent, rgba(52, 211, 153, 0.5), transparent);
+        }
+
+        .timeline-dot {
+            background: #030712;
+            border: 2px solid #34d399;
+            box-shadow: 0 0 15px rgba(52, 211, 153, 0.6);
+        }
+
+        /* General Floating */
+        .float-anim {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        /* Glass Input */
+        .glass-input {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #fff;
+            transition: all 0.3s ease;
+        }
+
+        .glass-input:focus {
+            outline: none;
+            border-color: #10b981;
+            background: rgba(255, 255, 255, 0.06);
+            box-shadow: 0 0 15px rgba(16, 185, 129, 0.2);
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #030712;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(16, 185, 129, 0.3);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(16, 185, 129, 0.6);
+        }
+
+        /* Fade in observer utility */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Loader Styles */
+        #loader {
+            background: transparent;
+            pointer-events: all;
+        }
+
+        #loader-content {
+            transition: all 0.8s ease-in-out;
+        }
+
+        .loader-logo {
+            animation: pulse-glow 2s infinite alternate;
+        }
+
+        @keyframes pulse-glow {
+            from {
+                box-shadow: 0 0 10px rgba(16, 185, 129, 0.2);
+                transform: scale(1);
+            }
+
+            to {
+                box-shadow: 0 0 30px rgba(16, 185, 129, 0.5);
+                transform: scale(1.05);
+            }
+        }
+
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal-left.visible,
+        .reveal-right.visible {
+            opacity: 1;
+            transform: translate(0);
+        }
+    </style>
+</head>
+
+<body class="antialiased selection:bg-emerald-500/30 overflow-hidden">
+
+    <!-- Split Door Loader -->
+    <div id="loader" class="fixed inset-0 z-[9999] flex overflow-hidden">
+        <div id="loader-left"
+            class="w-1/2 h-full bg-[#030712] transition-transform duration-[1500ms] ease-in-out border-r border-emerald-500/20">
+        </div>
+        <div id="loader-right"
+            class="w-1/2 h-full bg-[#030712] transition-transform duration-[1500ms] ease-in-out border-l border-emerald-500/20">
+        </div>
+        <div id="loader-content" class="absolute inset-0 flex flex-col items-center justify-center z-10">
+            <div class="mb-8 relative">
+                <div
+                    class="h-24 w-24 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center overflow-hidden loader-logo">
+                    <i class="fa-solid fa-database text-4xl text-emerald-400"></i>
+                </div>
+                <div class="absolute -inset-4 bg-emerald-500/20 blur-2xl -z-10 rounded-full"></div>
+            </div>
+            <div class="overflow-hidden">
+                <h2 id="loader-text" class="text-4xl md:text-6xl font-bold outfit text-white tracking-widest flex gap-2">
+                </h2>
+            </div>
+            <div class="mt-6 w-48 h-1 bg-white/5 rounded-full overflow-hidden relative">
+                <div id="loader-bar" class="absolute inset-y-0 left-0 bg-emerald-500 w-0 transition-all duration-[2000ms]">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Background Orbs -->
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+
+    <!-- Floating Navigation -->
+    <div class="fixed top-6 left-0 right-0 z-50 flex flex-col items-center px-4">
+        <nav
+            class="glass-nav rounded-full px-6 md:px-8 py-3 w-full max-w-4xl flex justify-between items-center transition-all">
+            <div class="flex items-center">
+                <span class="text-xl font-bold outfit tracking-wider text-white">THE DATA <span
+                        class="text-gradient">ROOM</span></span>
+            </div>
+            <div class="hidden md:flex items-center space-x-6 text-sm font-medium">
+                <a href="#home" class="text-gray-300 hover:text-emerald-400 transition-colors">Home</a>
+                <a href="#about" class="text-gray-300 hover:text-emerald-400 transition-colors">About</a>
+                <a href="#services" class="text-gray-300 hover:text-emerald-400 transition-colors">Services</a>
+                <a href="#projects" class="text-gray-300 hover:text-emerald-400 transition-colors">Projects</a>
+                <a href="#experience" class="text-gray-300 hover:text-emerald-400 transition-colors">Experience</a>
+            </div>
+            <div class="hidden md:block">
+                <a href="#contact"
+                    class="bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/20 px-5 py-2 rounded-full font-semibold transition-all shadow-[0_0_15px_rgba(34,211,238,0.15)] hover:shadow-[0_0_20px_rgba(34,211,238,0.3)] text-sm">
+                    Let's Connect
+                </a>
+            </div>
+            <button id="mobile-menu-btn" class="md:hidden text-gray-300 hover:text-emerald-400 focus:outline-none ml-4">
+                <i class="fa-solid fa-bars text-xl"></i>
+            </button>
+        </nav>
+
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobile-menu"
+            class="hidden w-full max-w-4xl mt-3 glass-nav rounded-2xl p-5 flex-col space-y-4 text-center border-white/10">
+            <a href="#home"
+                class="mobile-link text-gray-300 hover:text-emerald-400 font-medium pb-3 border-b border-gray-700/50">Home</a>
+            <a href="#about"
+                class="mobile-link text-gray-300 hover:text-emerald-400 font-medium pb-3 border-b border-gray-700/50">About</a>
+            <a href="#services"
+                class="mobile-link text-gray-300 hover:text-emerald-400 font-medium pb-3 border-b border-gray-700/50">Services</a>
+            <a href="#projects"
+                class="mobile-link text-gray-300 hover:text-emerald-400 font-medium pb-3 border-b border-gray-700/50">Projects</a>
+            <a href="#experience"
+                class="mobile-link text-gray-300 hover:text-emerald-400 font-medium pb-3 border-b border-gray-700/50">Experience</a>
+            <a href="#contact" class="mobile-link text-emerald-400 font-bold pt-1">Let's Connect</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center pt-24 pb-12 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="z-10 fade-in-up">
+                    <div
+                        class="inline-block px-4 py-1.5 rounded-full glass-card text-emerald-400 text-sm font-semibold mb-6 border-emerald-500/30">
+                        <i class="fa-solid fa-sparkles mr-2"></i> Data Analyst & Power BI Specialist
+                    </div>
+                    <h1 class="text-5xl md:text-7xl font-bold outfit mb-4 text-white leading-tight">
+                        Hi, I'm <br>
+                        <span class="text-gradient block mt-2">Syed Daniyal Ahmed</span>
+                    </h1>
+                    <p class="text-xl md:text-2xl text-gray-400 font-light mb-8 max-w-xl leading-relaxed">
+                        From Numbers to Narratives:<br>
+                        <span class="text-white font-medium">Driving Smarter Strategies through Advanced Data Analysis &
+                            Visualization Excellence.</span>
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#projects"
+                            class="bg-emerald-500 text-gray-900 px-8 py-3.5 rounded-xl font-bold hover:bg-emerald-400 transition-all shadow-[0_0_20px_rgba(34,211,238,0.4)] hover:shadow-[0_0_30px_rgba(34,211,238,0.6)] flex items-center">
+                            See my Projects <i class="fa-solid fa-arrow-right ml-2 text-sm"></i>
+                        </a>
+                        <a href="#contact"
+                            class="glass-card text-white px-8 py-3.5 rounded-xl font-semibold hover:border-white/20 transition-all flex items-center">
+                            Contact Me
+                        </a>
+                    </div>
+                </div>
+
+                <div class="relative z-10 hidden lg:block float-anim reveal-right">
+                    <div class="relative">
+                        <!-- Glowing backdrop behind image -->
+                        <div
+                            class="absolute inset-0 bg-gradient-to-tr from-emerald-500 to-green-600 rounded-3xl blur-2xl opacity-20">
+                        </div>
+                        <div
+                            class="glass-card rounded-3xl p-3 relative transform rotate-3 hover:rotate-0 transition-all duration-500">
+                            <img src="Cover 2.jpg" alt="Data Analytics Dashboard"
+                                class="rounded-2xl w-full h-auto object-cover border border-white/10 shadow-2xl" />
+
+                            <!-- Floating status badge -->
+                            <div
+                                class="absolute -bottom-6 -left-6 glass-card px-6 py-4 rounded-2xl flex items-center gap-4">
+                                <div
+                                    class="w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400">
+                                    <i class="fa-solid fa-chart-pie text-xl"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-gray-400 font-medium">Experience</p>
+                                    <p class="text-white font-bold outfit">3+ Years</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="relative reveal-left">
+                    <div class="absolute inset-0 bg-green-500/10 blur-3xl rounded-full"></div>
+                    <img src="Me Cover.jpeg" alt="Syed Daniyal Ahmed"
+                        class="rounded-3xl shadow-[0_0_40px_rgba(0,0,0,0.5)] border border-white/10 relative z-10 w-full object-cover aspect-square md:aspect-auto" />
+                </div>
+
+                <div class="fade-in-up">
+                    <h2 class="text-sm font-bold text-emerald-400 tracking-widest uppercase mb-2">About Me</h2>
+                    <h3 class="text-3xl md:text-5xl font-bold outfit text-white mb-6">Data-Driven <br><span
+                            class="text-gray-500">Decision Maker</span></h3>
+
+                    <div class="space-y-4 text-gray-400 text-lg leading-relaxed">
+                        <p>
+                            I am a Data Analyst and Power BI Specialist with over 3+ years of hands-on experience
+                            turning raw data into meaningful business insights. I specialize in advanced data analysis,
+                            interactive dashboards, and executive-level reporting that supports informed
+                            decision-making.
+                        </p>
+                        <p>
+                            My skill set includes <span class="text-emerald-300 font-medium">Power BI, DAX, Power Query,
+                                SQL, Excel</span>, and data modeling using best practices such as star schema and
+                            optimized relationships.
+                        </p>
+                        <p>
+                            I work closely with stakeholders to understand business requirements, KPIs, and performance
+                            metrics, translating them into clear and impactful visualizations. My focus is always on
+                            data accuracy, performance optimization, and user-friendly design.
+                        </p>
+                    </div>
+
+                    <div class="mt-8 flex flex-wrap items-center gap-4">
+                        <a href="Syed Daniyal Ahmed.pdf"
+                            class="glass-card text-white hover:text-emerald-400 font-semibold py-3.5 px-6 rounded-xl transition duration-300 flex items-center border border-white/10 hover:border-emerald-500/50">
+                            <i class="fa-regular fa-file-pdf mr-2"></i> Download Resume
+                        </a>
+                        <div class="flex gap-4 ml-4">
+                            <a href="https://www.linkedin.com/in/s-daniyal-ahmed-a58a24354/" target="_blank"
+                                class="w-12 h-12 rounded-full glass-card flex items-center justify-center text-gray-300 hover:text-emerald-400 hover:border-emerald-500/50 transition-all group">
+                                <i class="fab fa-linkedin-in text-xl group-hover:scale-110 transition-transform"></i>
+                            </a>
+                            <a href="https://github.com/syeddaniyal1996" target="_blank"
+                                class="w-12 h-12 rounded-full glass-card flex items-center justify-center text-gray-300 hover:text-white hover:border-white transition-all group">
+                                <i class="fab fa-github text-xl group-hover:scale-110 transition-transform"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-24 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20 fade-in-up">
+                <h2 class="text-sm font-bold text-emerald-400 tracking-widest uppercase mb-2">My Expertise</h2>
+                <h3 class="text-4xl md:text-5xl font-bold outfit text-white">Analytics Services</h3>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="glass-card p-8 rounded-3xl fade-in-up">
+                    <div
+                        class="w-16 h-16 rounded-2xl bg-gradient-to-br from-emerald-500/20 to-emerald-600/20 border border-emerald-500/30 flex items-center justify-center mb-8 text-emerald-400 shadow-[0_0_15px_rgba(52,211,153,0.15)]">
+                        <i class="fa-solid fa-chart-line text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold outfit text-white mb-4">Business Intelligence</h3>
+                    <p class="text-gray-400 mb-6 leading-relaxed">
+                        End-to-end data analysis focusing on cleaning, transformation, and visualization to support
+                        smarter business decisions.
+                    </p>
+                    <ul class="text-gray-400 space-y-3 font-medium text-sm">
+                        <li class="flex items-center"><i class="fa-solid fa-check text-emerald-500 mr-3"></i>Data Cleaning
+                            & Transformation</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-emerald-500 mr-3"></i>Power BI
+                            Dashboards</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-emerald-500 mr-3"></i>MS Excel
+                            Automation</li>
+                    </ul>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="glass-card p-8 rounded-3xl fade-in-up" style="transition-delay: 100ms;">
+                    <div
+                        class="w-16 h-16 rounded-2xl bg-gradient-to-br from-lime-500/20 to-pink-600/20 border border-lime-500/30 flex items-center justify-center mb-8 text-lime-400 shadow-[0_0_15px_rgba(168,85,247,0.15)]">
+                        <i class="fa-solid fa-layer-group text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold outfit text-white mb-4">Reporting & Vis</h3>
+                    <p class="text-gray-400 mb-6 leading-relaxed">
+                        Designing interactive reports that turn complex datasets into clear, actionable visual stories
+                        for executives.
+                    </p>
+                    <ul class="text-gray-400 space-y-3 font-medium text-sm">
+                        <li class="flex items-center"><i class="fa-solid fa-check text-lime-500 mr-3"></i>Interactive
+                            Dashboards</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-lime-500 mr-3"></i>KPI Tracking
+                            & Monitoring</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-lime-500 mr-3"></i>Data
+                            Storytelling</li>
+                    </ul>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="glass-card p-8 rounded-3xl fade-in-up" style="transition-delay: 200ms;">
+                    <div
+                        class="w-16 h-16 rounded-2xl bg-gradient-to-br from-emerald-500/20 to-teal-600/20 border border-emerald-500/30 flex items-center justify-center mb-8 text-emerald-400 shadow-[0_0_15px_rgba(16,185,129,0.15)]">
+                        <i class="fa-solid fa-database text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold outfit text-white mb-4">SQL Analytics</h3>
+                    <p class="text-gray-400 mb-6 leading-relaxed">
+                        Leveraging SQL to query, clean, and analyze databases for actionable insights and operational
+                        optimization.
+                    </p>
+                    <ul class="text-gray-400 space-y-3 font-medium text-sm">
+                        <li class="flex items-center"><i class="fa-solid fa-check text-emerald-500 mr-3"></i>Complex
+                            Queries & JOINS</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-emerald-500 mr-3"></i>Performance
+                            Tuning</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-emerald-500 mr-3"></i>BI Tools
+                            Integration</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-24 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div
+                class="flex flex-col items-center text-center md:text-left md:flex-row justify-between md:items-end mb-16 fade-in-up">
+                <div>
+                    <h2 class="text-sm font-bold text-emerald-400 tracking-widest uppercase mb-2">Portfolio</h2>
+                    <h3 class="text-4xl md:text-5xl font-bold outfit text-white">Featured Work</h3>
+                </div>
+                <div class="mt-6 md:mt-0">
+                    <a href="https://github.com/syeddaniyal1996" target="_blank"
+                        class="text-gray-400 hover:text-emerald-400 transition-colors flex items-center justify-center md:justify-start group">
+                        View Complete Archive <i
+                            class="fa-solid fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Project 1 -->
+                <div class="glass-card rounded-3xl overflow-hidden group reveal-left">
+                    <div class="h-64 overflow-hidden relative">
+                        <div class="absolute inset-0 bg-black/40 group-hover:bg-black/10 transition-all z-10"></div>
+                        <img src="Global Superstore.PNG"
+                            class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+                            alt="Global Superstore" />
+                    </div>
+                    <div class="p-6 md:p-8 relative">
+                        <div class="flex flex-wrap gap-2 mb-4 absolute -top-5 left-6 md:left-8 z-20">
+                            <span
+                                class="bg-gray-900 border border-gray-700 text-green-400 px-3 py-1 rounded-full text-xs font-bold shadow-lg">Excel</span>
+                            <span
+                                class="bg-gray-900 border border-gray-700 text-yellow-400 px-3 py-1 rounded-full text-xs font-bold shadow-lg">Power
+                                BI</span>
+                        </div>
+                        <h3
+                            class="text-2xl font-bold outfit text-white mb-3 mt-5 md:mt-2 group-hover:text-emerald-400 transition-colors">
+                            Global Superstore</h3>
+                        <p class="text-gray-400 mb-6 text-sm leading-relaxed">
+                            A comprehensive analysis of sales data using interactive dashboards. Includes insights on
+                            revenue, profit trends, product categories, and regional performance.
+                        </p>
+                        <a href="https://github.com/syeddaniyal1996/Global_Superstore" target="_blank"
+                            class="inline-flex glass-card items-center px-4 py-2 rounded-lg text-sm text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+                            <i class="fab fa-github mr-2"></i> View Repository
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="glass-card rounded-3xl overflow-hidden group reveal-right" style="transition-delay: 100ms;">
+                    <div class="h-64 overflow-hidden relative">
+                        <div class="absolute inset-0 bg-black/40 group-hover:bg-black/10 transition-all z-10"></div>
+                        <img src="Retail Supply Chain.PNG"
+                            class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+                            alt="Supply Chain" />
+                    </div>
+                    <div class="p-6 md:p-8 relative">
+                        <div class="flex flex-wrap gap-2 mb-4 absolute -top-5 left-6 md:left-8 z-20">
+                            <span
+                                class="bg-gray-900 border border-gray-700 text-yellow-400 px-3 py-1 rounded-full text-xs font-bold shadow-lg">Power
+                                BI</span>
+                        </div>
+                        <h3
+                            class="text-2xl font-bold outfit text-white mb-3 mt-5 md:mt-2 group-hover:text-emerald-400 transition-colors">
+                            Retail Supply Chain</h3>
+                        <p class="text-gray-400 mb-6 text-sm leading-relaxed">
+                            Driving efficiency in retail supply chains by uncovering bottlenecks and improving demand
+                            forecasting through advanced visualizations.
+                        </p>
+                        <a href="https://github.com/syeddaniyal1996/Retail_Supply_Chain_PowerBI" target="_blank"
+                            class="inline-flex glass-card items-center px-4 py-2 rounded-lg text-sm text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+                            <i class="fab fa-github mr-2"></i> View Repository
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="glass-card rounded-3xl overflow-hidden group reveal-left">
+                    <div class="h-64 overflow-hidden relative">
+                        <div class="absolute inset-0 bg-black/40 group-hover:bg-black/10 transition-all z-10"></div>
+                        <img src="PostgreSQL Project.png"
+                            class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+                            alt="Movies Database" />
+                    </div>
+                    <div class="p-6 md:p-8 relative">
+                        <div class="flex flex-wrap gap-2 mb-4 absolute -top-5 left-6 md:left-8 z-20">
+                            <span
+                                class="bg-gray-900 border border-gray-700 text-rose-400 px-3 py-1 rounded-full text-xs font-bold shadow-lg">SQL</span>
+                            <span
+                                class="bg-gray-900 border border-gray-700 text-emerald-400 px-3 py-1 rounded-full text-xs font-bold shadow-lg">MySQL</span>
+                        </div>
+                        <h3
+                            class="text-2xl font-bold outfit text-white mb-3 mt-5 md:mt-2 group-hover:text-emerald-400 transition-colors">
+                            Movies Database</h3>
+                        <p class="text-gray-400 mb-6 text-sm leading-relaxed">
+                            Movies Database System, enabling efficient data storage, querying, and analysis of films,
+                            genres, and ratings.
+                        </p>
+                        <a href="https://github.com/syeddaniyal1996/Movies_Database_PostgreSQL" target="_blank"
+                            class="inline-flex glass-card items-center px-4 py-2 rounded-lg text-sm text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+                            <i class="fab fa-github mr-2"></i> View Repository
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="glass-card rounded-3xl overflow-hidden group reveal-right" style="transition-delay: 100ms;">
+                    <div class="h-64 overflow-hidden relative">
+                        <div class="absolute inset-0 bg-black/40 group-hover:bg-black/10 transition-all z-10"></div>
+                        <img src="Bakery MySQL.PNG"
+                            class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+                            alt="Bakery Database" />
+                    </div>
+                    <div class="p-6 md:p-8 relative">
+                        <div class="flex flex-wrap gap-2 mb-4 absolute -top-5 left-6 md:left-8 z-20">
+                            <span
+                                class="bg-gray-900 border border-gray-700 text-emerald-400 px-3 py-1 rounded-full text-xs font-bold shadow-lg">Azure
+                                SQL</span>
+                        </div>
+                        <h3
+                            class="text-2xl font-bold outfit text-white mb-3 mt-5 md:mt-2 group-hover:text-emerald-400 transition-colors">
+                            Bakery Database</h3>
+                        <p class="text-gray-400 mb-6 text-sm leading-relaxed">
+                            Bakery Management System for tracking sales, inventory, and customer orders with improved
+                            efficiency.
+                        </p>
+                        <a href="https://github.com/syeddaniyal1996/Bakery_Project_MySQL" target="_blank"
+                            class="inline-flex glass-card items-center px-4 py-2 rounded-lg text-sm text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+                            <i class="fab fa-github mr-2"></i> View Repository
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Timeline Section -->
+    <section id="experience" class="py-24 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20 fade-in-up">
+                <h2 class="text-sm font-bold text-emerald-400 tracking-widest uppercase mb-2">My Journey</h2>
+                <h3 class="text-4xl md:text-5xl font-bold outfit text-white">Experience & Education</h3>
+            </div>
+
+            <div class="flex flex-col md:flex-row gap-16">
+                <!-- Experience Grid -->
+                <div class="md:w-1/2 relative">
+                    <div class="absolute left-6 top-0 bottom-0 timeline-line"></div>
+
+                    <div class="space-y-12">
+                        <!-- Exp 1 -->
+                        <div class="relative pl-16 reveal-left">
+                            <div
+                                class="absolute left-[20px] top-2 w-3.5 h-3.5 rounded-full timeline-dot border-emerald-400">
+                            </div>
+                            <div class="glass-card p-6 rounded-2xl hover:border-emerald-500/50">
+                                <span
+                                    class="text-xs font-bold tracking-wider text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full mb-3 inline-block border border-emerald-500/20">Dec
+                                    2024 - Jun 2025</span>
+                                <h4 class="text-xl font-bold text-white mb-1">Data Analyst (Seasonal)</h4>
+                                <p class="text-gray-400 mb-4 font-medium text-sm">AnalytixCamp</p>
+                                <ul class="text-gray-500 text-sm space-y-2 list-none">
+                                    <li class="flex items-start"><i
+                                            class="fa-solid fa-angle-right text-emerald-500 mt-1 mr-2 text-xs"></i> Led
+                                        data analytics initiatives for business insights</li>
+                                    <li class="flex items-start"><i
+                                            class="fa-solid fa-angle-right text-emerald-500 mt-1 mr-2 text-xs"></i> Created
+                                        and maintained RDBMS with SQL</li>
+                                    <li class="flex items-start"><i
+                                            class="fa-solid fa-angle-right text-emerald-500 mt-1 mr-2 text-xs"></i>
+                                        Developed interactive dashboards for clients</li>
+                                    <li class="flex items-start"><i
+                                            class="fa-solid fa-angle-right text-emerald-500 mt-1 mr-2 text-xs"></i> Reduced
+                                        operational costs by 22%</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Exp 2 -->
+                        <div class="relative pl-16 reveal-left" style="transition-delay: 100ms;">
+                            <div
+                                class="absolute left-[20px] top-2 w-3.5 h-3.5 rounded-full timeline-dot border-lime-400">
+                            </div>
+                            <div class="glass-card p-6 rounded-2xl hover:border-lime-500/50">
+                                <span
+                                    class="text-xs font-bold tracking-wider text-lime-400 bg-lime-500/10 px-3 py-1 rounded-full mb-3 inline-block border border-lime-500/20">Nov
+                                    2022 - Dec 2024</span>
+                                <h4 class="text-xl font-bold text-white mb-1">Junior Data Analyst</h4>
+                                <p class="text-gray-400 mb-4 font-medium text-sm">Easa Business Group</p>
+                                <ul class="text-gray-500 text-sm space-y-2 list-none">
+                                    <li class="flex items-start"><i
+                                            class="fa-solid fa-angle-right text-lime-500 mt-1 mr-2 text-xs"></i>
+                                        Cleaned/transformed raw sales data</li>
+                                    <li class="flex items-start"><i
+                                            class="fa-solid fa-angle-right text-lime-500 mt-1 mr-2 text-xs"></i>
+                                        Developed automated Power BI dashboards</li>
+                                    <li class="flex items-start"><i
+                                            class="fa-solid fa-angle-right text-lime-500 mt-1 mr-2 text-xs"></i>
+                                        Optimized reporting workflows by 25%</li>
+                                    <li class="flex items-start"><i
+                                            class="fa-solid fa-angle-right text-lime-500 mt-1 mr-2 text-xs"></i>
+                                        Enabled faster data-driven decisions</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Exp 3 -->
+                        <div class="relative pl-16 fade-in-up" style="transition-delay: 200ms;">
+                            <div
+                                class="absolute left-[20px] top-2 w-3.5 h-3.5 rounded-full timeline-dot border-emerald-400">
+                            </div>
+                            <div class="glass-card p-6 rounded-2xl hover:border-emerald-500/50">
+                                <span
+                                    class="text-xs font-bold tracking-wider text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full mb-3 inline-block border border-green-500/10">Apr
+                                    2021 - May 2022</span>
+                                <h4 class="text-xl font-bold text-white mb-1">Educational Data Specialist</h4>
+                                <p class="text-gray-400 mb-4 font-medium text-sm">The Mentors Academy</p>
+                                <ul class="text-gray-500 text-sm space-y-2 list-none">
+                                    <li class="flex items-start"><i
+                                            class="fa-solid fa-angle-right text-emerald-500 mt-1 mr-2 text-xs"></i>
+                                        Analyzed student performance data</li>
+                                    <li class="flex items-start"><i
+                                            class="fa-solid fa-angle-right text-emerald-500 mt-1 mr-2 text-xs"></i>
+                                        Maintained academic databases</li>
+                                    <li class="flex items-start"><i
+                                            class="fa-solid fa-angle-right text-emerald-500 mt-1 mr-2 text-xs"></i>
+                                        Increased student outcomes insights by 15%</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Education & Certs Grid -->
+                <div class="md:w-1/2 space-y-12">
+                    <!-- Education -->
+                    <div class="reveal-right">
+                        <div class="flex items-center gap-3 mb-6">
+                            <i class="fa-solid fa-graduation-cap text-2xl text-emerald-400"></i>
+                            <h3 class="text-2xl font-bold text-white outfit">Education</h3>
+                        </div>
+                        <div class="glass-card p-6 rounded-2xl border-emerald-500/20 hover:border-emerald-500/50">
+                            <span
+                                class="text-xs font-bold tracking-wider text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full mb-3 inline-block border border-emerald-500/20">2016
+                                - 2018</span>
+                            <h4 class="text-xl font-bold text-white mb-1">Bachelors in Commerce</h4>
+                            <p class="text-gray-400 mb-3 font-medium text-sm">University of Sindh</p>
+                            <p class="text-gray-500 text-sm leading-relaxed">Specialized in Commerce with a strong
+                                foundation in accounting, finance, and business management. Graduated with distinction.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Certifications -->
+                    <div class="fade-in-up" style="transition-delay: 100ms;">
+                        <div class="flex items-center gap-3 mb-6">
+                            <i class="fa-solid fa-certificate text-2xl text-emerald-400"></i>
+                            <h3 class="text-2xl font-bold text-white outfit">Certifications & Webinars</h3>
+                        </div>
+
+                        <div class="space-y-4">
+                            <!-- Cert Item -->
+                            <div
+                                class="glass-card p-5 rounded-xl flex items-start gap-4 hover:bg-white/5 transition-all">
+                                <div
+                                    class="w-10 h-10 rounded-lg bg-emerald-500/10 flex-shrink-0 flex items-center justify-center text-emerald-400 mt-1 border border-emerald-500/20">
+                                    <i class="fa-solid fa-trophy"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-bold">Zoomcharts Competitions</h4>
+                                    <p class="text-gray-400 text-xs mt-1 mb-2">2026 - Present</p>
+                                    <p class="text-gray-500 text-sm leading-relaxed mb-2">Building interactive Power BI
+                                        dashboards focused on data storytelling and advanced visualization techniques.
+                                    </p>
+                                    <a href="https://drive.google.com/drive/folders/1xFkwsUk0qTCxrv76bCkX80gLz95k2jRW"
+                                        target="_blank" class="text-emerald-400 text-xs font-semibold hover:underline">View
+                                        Certificates →</a>
+                                </div>
+                            </div>
+
+                            <!-- Cert Item -->
+                            <div
+                                class="glass-card p-5 rounded-xl flex items-start gap-4 hover:bg-white/5 transition-all">
+                                <div
+                                    class="w-10 h-10 rounded-lg bg-emerald-500/10 flex-shrink-0 flex items-center justify-center text-emerald-400 mt-1 border border-green-500/10">
+                                    <i class="fa-solid fa-laptop-code"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-bold">AnalytixCamp & WsCube Tech</h4>
+                                    <p class="text-gray-400 text-xs mt-1 mb-2">2024 - 2025</p>
+                                    <p class="text-gray-500 text-sm leading-relaxed">Explored professional data
+                                        analytics with SQL, Power BI, and differing data methodologies.</p>
+                                </div>
+                            </div>
+
+                            <!-- Cert Item -->
+                            <div
+                                class="glass-card p-5 rounded-xl flex items-start gap-4 hover:bg-white/5 transition-all">
+                                <div
+                                    class="w-10 h-10 rounded-lg bg-orange-500/10 flex-shrink-0 flex items-center justify-center text-orange-400 mt-1 border border-orange-500/20">
+                                    <i class="fa-solid fa-chart-line"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-bold">Forage & HP Life</h4>
+                                    <p class="text-gray-400 text-xs mt-1 mb-2">2024 - 2026</p>
+                                    <p class="text-gray-500 text-sm leading-relaxed">Data Science & Analytics, Effective
+                                        Presentations, and Business Insights visualization techniques.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 relative z-10 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16">
+                <div class="fade-in-up">
+                    <h2 class="text-sm font-bold text-emerald-400 tracking-widest uppercase mb-2">Get In Touch</h2>
+                    <h3 class="text-4xl md:text-5xl font-bold outfit text-white mb-6">Let's talk about your next <span
+                            class="text-emerald-400">Data Strategy.</span></h3>
+                    <p class="text-gray-400 mb-10 text-lg">Ready to transform your raw data into actionable insights?
+                        Reach out and let's build something brilliant together.</p>
+
+                    <div class="space-y-6">
+                        <div class="glass-card p-4 rounded-2xl flex items-center gap-5 inline-flex min-w-80">
+                            <div
+                                class="w-12 h-12 bg-emerald-500/10 rounded-xl flex items-center justify-center text-emerald-400 border border-emerald-500/20">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <p class="text-gray-500 text-xs font-medium uppercase tracking-wider">Email Address</p>
+                                <p class="text-white font-semibold">sdaniyal_ahmed@hotmail.com</p>
+                            </div>
+                        </div>
+
+                        <div class="glass-card p-4 rounded-2xl flex items-center gap-5 inline-flex min-w-80">
+                            <div
+                                class="w-12 h-12 bg-green-500/10 rounded-xl flex items-center justify-center text-green-400 border border-green-500/20">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <p class="text-gray-500 text-xs font-medium uppercase tracking-wider">Phone</p>
+                                <p class="text-white font-semibold">+92 332 2622636</p>
+                            </div>
+                        </div>
+
+                        <div class="glass-card p-4 rounded-2xl flex items-center gap-5 inline-flex min-w-80">
+                            <div
+                                class="w-12 h-12 bg-lime-500/10 rounded-xl flex items-center justify-center text-lime-400 border border-lime-500/20">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <p class="text-gray-500 text-xs font-medium uppercase tracking-wider">Location</p>
+                                <p class="text-white font-semibold">Karachi, Sindh, Pakistan</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="fade-in-up" style="transition-delay: 200ms;">
+                    <div class="glass-card p-8 md:p-10 rounded-3xl relative overflow-hidden">
+                        <div class="absolute -top-20 -right-20 w-40 h-40 bg-emerald-500/20 rounded-full blur-3xl"></div>
+
+                        <form class="space-y-6 relative z-10">
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-gray-400 text-sm font-medium mb-2">Name</label>
+                                    <input type="text" class="w-full glass-input rounded-xl px-4 py-3"
+                                        placeholder="Your Name Here">
+                                </div>
+                                <div>
+                                    <label class="block text-gray-400 text-sm font-medium mb-2">Email</label>
+                                    <input type="email" class="w-full glass-input rounded-xl px-4 py-3"
+                                        placeholder="Your Email Here">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-gray-400 text-sm font-medium mb-2">Subject</label>
+                                <input type="text" class="w-full glass-input rounded-xl px-4 py-3"
+                                    placeholder="Project Discussion">
+                            </div>
+                            <div>
+                                <label class="block text-gray-400 text-sm font-medium mb-2">Message</label>
+                                <textarea rows="5" class="w-full glass-input rounded-xl px-4 py-3 resize-none"
+                                    placeholder="How can I help you?"></textarea>
+                            </div>
+                            <button type="submit"
+                                class="w-full bg-gradient-to-r from-emerald-500 to-green-600 text-white shadow-[0_0_15px_rgba(52, 211, 153, 0.4)] hover:shadow-[0_0_25px_rgba(52, 211, 153, 0.6)] py-4 rounded-xl font-bold text-lg hover:-translate-y-1 transition-all duration-300">
+                                Send Message <i class="fa-solid fa-paper-plane ml-2"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/5 bg-black/50 py-12 relative z-10 w-full">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
+            <span class="text-2xl font-bold outfit tracking-wider text-white mb-2">THE DATA <span
+                    class="text-gradient">ROOM</span></span>
+            <p class="text-gray-500 font-medium mb-8">Turning Data into Strategic Advantage</p>
+
+            <div class="flex flex-wrap justify-center gap-8 mb-8">
+                <a href="#home" class="text-sm font-medium text-gray-400 hover:text-emerald-400 transition-colors">Home</a>
+                <a href="#about"
+                    class="text-sm font-medium text-gray-400 hover:text-emerald-400 transition-colors">About</a>
+                <a href="#services"
+                    class="text-sm font-medium text-gray-400 hover:text-emerald-400 transition-colors">Services</a>
+                <a href="#projects"
+                    class="text-sm font-medium text-gray-400 hover:text-emerald-400 transition-colors">Projects</a>
+                <a href="#experience"
+                    class="text-sm font-medium text-gray-400 hover:text-emerald-400 transition-colors">Experience</a>
+            </div>
+
+            <div class="w-full max-w-md h-px bg-gradient-to-r from-transparent via-gray-700 to-transparent mb-8"></div>
+
+            <p class="text-gray-600 text-sm">Copyright &copy; 2025 Syed Daniyal Ahmed. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                const target = document.querySelector(targetId);
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Gmail Redirect Form Implementation
+        const contactForm = document.querySelector('form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                const inputs = this.querySelectorAll('input[type="text"]');
+                const name = inputs[0].value;
+                const subject = inputs.length > 1 ? inputs[1].value : 'Project Discussion';
+                const email = this.querySelector('input[type="email"]').value;
+                const message = this.querySelector('textarea').value;
+
+                if (!name || !email || !message) {
+                    alert('Please fill in all fields');
+                    return;
+                }
+
+                if (!email.includes('@')) {
+                    alert('Please enter a valid email address');
+                    return;
+                }
+
+                const bodyMsg = `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
+                const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=sdaniyal_ahmed@hotmail.com&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyMsg)}`;
+
+                window.open(gmailLink, '_blank');
+                this.reset();
+            });
+        }
+
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        if (btn && menu) {
+            btn.addEventListener('click', () => {
+                menu.classList.toggle('hidden');
+                menu.classList.toggle('flex');
+            });
+
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    menu.classList.add('hidden');
+                    menu.classList.remove('flex');
+                });
+            });
+        }
+
+        // Intersection Observer for scroll fade-in animations
+        const fadeElements = document.querySelectorAll('.fade-in-up');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target); // Only animate once
+                }
+            });
+        }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+
+            fadeElements.forEach(el => observer.observe(el));
+
+        // Initialize Loader logic
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('loader');
+            const leftDoor = document.getElementById('loader-left');
+            const rightDoor = document.getElementById('loader-right');
+            const content = document.getElementById('loader-content');
+            const bar = document.getElementById('loader-bar');
+            const textContainer = document.getElementById('loader-text');
+
+            // Inject letters for flying animation
+            const text = "DANIYAL";
+            text.split('').forEach((char, i) => {
+                const span = document.createElement('span');
+                span.textContent = char;
+                span.style.opacity = '0';
+                span.style.transform = `translateY(${Math.random() * 100 - 50}px) translateX(${Math.random() * 100 - 50}px) rotate(${Math.random() * 360}deg)`;
+                span.style.transition = `all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) ${0.1 * i}s`;
+                span.className = 'inline-block';
+                textContainer.appendChild(span);
+
+                setTimeout(() => {
+                    span.style.opacity = '1';
+                    span.style.transform = 'translate(0) rotate(0)';
+                }, 100);
+            });
+
+            // Start progress bar
+            setTimeout(() => {
+                if (bar) bar.style.width = '100%';
+            }, 100);
+
+            // Opening sequence
+            setTimeout(() => {
+                // Fade out content
+                if (content) content.style.opacity = '0';
+                if (content) content.style.transform = 'scale(0.9)';
+
+                setTimeout(() => {
+                    // Split doors
+                    if (leftDoor) leftDoor.style.transform = 'translateX(-100%)';
+                    if (rightDoor) rightDoor.style.transform = 'translateX(100%)';
+
+                    setTimeout(() => {
+                        if (loader) loader.style.display = 'none';
+                        document.body.style.overflow = 'auto'; // Re-enable scroll
+                    }, 1500);
+                }, 800);
+            }, 2500);
+        });
+
+        // Combined Intersection Observer for all reveal types
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+
+        document.querySelectorAll('.fade-in-up, .reveal-left, .reveal-right').forEach(el => revealObserver.observe(el));
+    </script>
+</body>
+
+</html>
